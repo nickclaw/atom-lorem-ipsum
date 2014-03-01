@@ -1,11 +1,11 @@
 {
     "name": "lorem-ipsum",
     "description": "Generate lorem ipsum text in Atom.",
-    "keywords":["lorem", "ipsum", "generate", "generator", "atom", "package"]
+    "keywords":["lorem", "ipsum", "generate", "generator", "atom", "package"],
     "version":"0.1",
     "license":"MIT",
     "repository":"https://github.com/nickclaw/atom-lorem-ipsum",
-    "author":{"name":"Nicholas Clawson", "url":"http://nickclaw.com"}
+    "author":{"name":"Nicholas Clawson", "url":"http://nickclaw.com"},
 
     "main": "lib/index.coffee",
 

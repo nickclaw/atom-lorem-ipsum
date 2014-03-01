@@ -15,7 +15,7 @@ module.exports =
             editor = atom.workspace.getActiveEditor()
             editor.insertText generate
                 units : 'paragraphs'
-                count : Math.floor Math.random() * 4 + 1
+                count : Math.floor Math.random() * 3 + 3
 
 defaults =
     count:1
