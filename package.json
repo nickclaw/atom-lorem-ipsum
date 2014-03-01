@@ -1,0 +1,8 @@
+{
+    "name": "lorem-ipsum-atom",
+    "description": "Generate blocks of lorem ipsum.",
+    "main": "index.coffee",
+    "dependencies": {
+        "lorem-ipsum": "~1.0.1"
+    }
+}
