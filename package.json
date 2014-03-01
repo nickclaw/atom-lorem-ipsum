@@ -1,25 +1,31 @@
 {
-    "name": "lorem-ipsum",
-    "description": "Generate lorem ipsum text in Atom.",
-    "keywords":["lorem", "ipsum", "generate", "generator", "atom", "package"],
-    "version":"0.1.0",
-    "license":"MIT",
-    "repository":"https://github.com/nickclaw/atom-lorem-ipsum",
-    "author":{"name":"Nicholas Clawson", "url":"http://nickclaw.com"},
-
-    "main": "lib/index.coffee",
-
-    "activationEvents": [
-        "lorem-ipsum:sentence",
-        "lorem-ipsum:paragraph",
-        "lorem-ipsum:paragraphs"
-    ],
-
-    "engines": {
-        "atom": "*"
-    },
-
-    "dependencies": {
-        "lorem-ipsum": "~1.0.1"
-    }
+  "name": "lorem-ipsum",
+  "description": "Generate lorem ipsum text in Atom.",
+  "keywords": [
+    "lorem",
+    "ipsum",
+    "generate",
+    "generator",
+    "atom",
+    "package"
+  ],
+  "version": "0.2.0",
+  "license": "MIT",
+  "repository": "https://github.com/nickclaw/atom-lorem-ipsum",
+  "author": {
+    "name": "Nicholas Clawson",
+    "url": "http://nickclaw.com"
+  },
+  "main": "lib/index.coffee",
+  "activationEvents": [
+    "lorem-ipsum:sentence",
+    "lorem-ipsum:paragraph",
+    "lorem-ipsum:paragraphs"
+  ],
+  "engines": {
+    "atom": "*"
+  },
+  "dependencies": {
+    "lorem-ipsum": "~1.0.1"
+  }
 }
