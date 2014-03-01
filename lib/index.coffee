@@ -2,29 +2,20 @@ window.lorem = require 'lorem-ipsum'
 
 module.exports =
     activate: (state) ->
-        atom.workspaceView.on('lorem-ipsum:sentence', ->
-            editor = atom.workspaceView.getActivePaneItem()
+        atom.workspaceView.command 'lorem-ipsum:sentence', ->
+            editor = atom.workspace.getActiveEditor()
             editor.insertText generate()
-        )
 
-        atom.workspaceView.on('lorem-ipsum:paragraph', ->
-            editor = atom.workspaceView.getActivePaneItem()
-            editor.insertText generate {
+        atom.workspaceView.command 'lorem-ipsum:paragraph', ->
+            editor = atom.workspace.getActiveEditor()
+            editor.insertText generate
                 'units': 'paragraphs'
-            }
-        )
 
-        atom.workspaceView.on('lorem-ipsum:paragraphs', ->
-            editor = atom.workspaceView.getActivePaneItem()
-            editor.insertText generate {
+        atom.workspaceView.command 'lorem-ipsum:paragraphs', ->
+            editor = atom.workspace.getActiveEditor()
+            editor.insertText generate
                 units : 'paragraphs'
                 count : Math.floor Math.random() * 4 + 1
-            }
-        )
-
-    serialize: ->
-
-    deactivate: ->
 
 defaults =
     count:1
