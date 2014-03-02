@@ -12,7 +12,7 @@ describe 'lorem-ipsum', ->
         atom.workspace.getActiveEditor = ->
             editor
 
-        promise = atom.packages.activatePackage('atom-lorem-ipsum')
+        promise = atom.packages.activatePackage('lorem-ipsum')
 
         runs ->
             view = atom.workspaceView.getActiveView()
@@ -33,7 +33,7 @@ describe 'lorem-ipsum', ->
                 expect(text.indexOf('.') - text.length + 1).toEqual 0
 
     describe 'lorem-ipsum:paragraph', ->
-        it 'generate one paragraph', ->
+        it 'generates one paragraph', ->
 
             expect(editor.getText()).toEqual ""
             view.trigger 'lorem-ipsum:paragraph'
@@ -48,7 +48,7 @@ describe 'lorem-ipsum', ->
                 expect(text.split('.').length).toBeGreaterThan 1
 
     describe 'lorem-ipsum:paragraphs', ->
-        it 'generate multiple paragraphs', ->
+        it 'generates multiple paragraphs', ->
 
             expect(editor.getText()).toEqual ""
             view.trigger 'lorem-ipsum:paragraphs'
@@ -60,3 +60,20 @@ describe 'lorem-ipsum', ->
                 text = editor.getText()
                 expect(text).not.toEqual ""
                 expect(text.split("\n").length).toBeGreaterThan 1
+
+    describe 'settings', ->
+        it 'outputs one paragraph with one sentence with one word under the
+            most limited settings', ->
+
+            atom.config.set 'lorem-ipsum.wordRange', [1,1]
+            atom.config.set 'lorem-ipsum.sentenceRange', [1,1]
+            atom.config.set 'lorem-ipsum.paragraphRange', [1,1]
+
+            view.trigger 'lorem-ipsum:paragraphs'
+
+            waitsForPromise ->
+                promise
+
+            runs ->
+                text = editor.getText()
+                expect(text.indexOf ' ').toEqual -1

@@ -30,7 +30,7 @@ module.exports =
 
         # get variables and create basic options
         editor = atom.workspace.getActiveEditor()
-        config = atom.config.get('atom-lorem-ipsum')
+        config = atom.config.get('lorem-ipsum')
         options =
             units: 'paragraphs'
             format: 'plain'
