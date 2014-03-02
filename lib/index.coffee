@@ -21,11 +21,12 @@ module.exports =
             lorem-ipsum:paragraph
             lorem-ipsum:paragraphs', @generate
 
+
     ###
     Outputs lorem ipsum text into the editor pane
     Handles lorem-ipsum:(sentence|paragraph|paragraphs)
     ###
-    generate: (evt) ->
+    generate: ({type}) ->
 
         # get variables and create basic options
         editor = atom.workspace.getActiveEditor()
@@ -40,11 +41,11 @@ module.exports =
             count: 1
 
         # customize options if necessary
-        options.units = 'sentence' if evt.type == 'lorem-ipsum:sentence'
+        options.units = 'sentence' if type == 'lorem-ipsum:sentence'
         options.count = Math.floor(
             parseInt(config.paragraphRange[0]) + Math.random() *
             parseInt(config.paragraphRange[1] - config.paragraphRange[0] + 1)
-        ) if evt.type == 'lorem-ipsum:paragraphs'
+        ) if type == 'lorem-ipsum:paragraphs'
 
         # generate text and insert it at cursor(s)
         editor?.insertText lorem options
