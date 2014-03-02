@@ -1,31 +1,36 @@
 window.lorem = require 'lorem-ipsum'
 
 module.exports =
+    configDefaults:
+        wordRange: [6,15]
+        sentenceRange: [4,10]
+        paragraphRange: [3,5]
+
     activate: (state) ->
-        atom.workspaceView.command 'lorem-ipsum:sentence', ->
-            editor = atom.workspace.getActiveEditor()
-            editor.insertText generate()
 
-        atom.workspaceView.command 'lorem-ipsum:paragraph', ->
-            editor = atom.workspace.getActiveEditor()
-            editor.insertText generate
-                'units': 'paragraphs'
+        # list for events
+        atom.workspaceView.command '
+            lorem-ipsum:sentence
+            lorem-ipsum:paragraph
+            lorem-ipsum:paragraphs', @generate
 
-        atom.workspaceView.command 'lorem-ipsum:paragraphs', ->
-            editor = atom.workspace.getActiveEditor()
-            editor.insertText generate
-                units : 'paragraphs'
-                count : Math.floor Math.random() * 3 + 3
+    generate: (evt) ->
+        console.log evt
+        editor = atom.workspace.getActiveEditor()
+        config = atom.config.get('atom-lorem-ipsum')
+        options =
+            units: 'paragraphs'
+            format: 'plain'
+            sentenceLowerBound: parseInt config.wordRange[0]
+            sentenceUpperBound: parseInt config.wordRange[1]
+            paragraphLowerBound: parseInt config.sentenceRange[0]
+            paragraphUpperBound: parseInt config.sentenceRange[1]
+            count: 1
 
-defaults =
-    count:1
-    units:'sentence'
-    sentenceLowerBound:5
-    sentenceUpperBound:15
-    paragraphLowerBound:4
-    paragraphUpperBound:10
-    format:'plain'
+        options.units = 'sentence' if evt.type == 'lorem-ipsum:sentence'
+        options.count = Math.floor(
+            parseInt(config.paragraphRange[0]) + Math.random() *
+            parseInt(config.paragraphRange[1] - config.paragraphRange[0])
+        ) if evt.type == 'lorem-ipsum:paragraphs'
 
-generate = (options = {}) ->
-    options[key] = defaults[key] for key of defaults when options[key] == undefined
-    lorem options
+        editor?.insertText lorem options
