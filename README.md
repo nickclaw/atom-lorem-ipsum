@@ -1,7 +1,26 @@
-atom-lorem-ipsum
+lorem-ipsum
 ==================
 
 Generate lorem ipsum text of varying sizes in Atom.
+
+## Installation
+
+#### For Use
+Install the Lorem Ipsum package using the command line
+
+    apm install lorem-ipsum
+
+Or install it from the Atom Package Manager.
+
+#### For Development
+If you want to make changes to this project. Install the package using
+
+    apm develop lorem-ipsum
+
+Then open Atom in developer mode (Atom command tools must be installed)
+
+    cd path/to/package
+    atom --dev
 
 ## Example
 
@@ -23,11 +42,10 @@ defined by `ranges`, which are 2 integers in ascending order, separated by a com
 ![settings options](http://i.imgur.com/mUfClaT.png)
 
 #### Paragraph Range - `2, 5`
-The range of paragraphs generated when you generate multiple
-paragraphs.
+The number of paragraphs generated when you generate multiple paragraphs.
 
 #### Sentence Range - `4, 10`
-The range of sentences that can be in a paragraph
+Number of sentences in a paragraph.
 
 #### Word Range - `6, 15`
-The range of words that can be in a sentence.
+Number of words in a sentence.
