@@ -17,11 +17,13 @@
     "url": "http://nickclaw.com"
   },
   "main": "lib/index.coffee",
-  "activationEvents": [
-    "lorem-ipsum:sentence",
-    "lorem-ipsum:paragraph",
-    "lorem-ipsum:paragraphs"
-  ],
+  "activationCommands": {
+    "atom-text-editor": [
+      "lorem-ipsum:sentence",
+      "lorem-ipsum:paragraph",
+      "lorem-ipsum:paragraphs"
+    ]
+  },
   "engines": {
     "atom": "*"
   },
